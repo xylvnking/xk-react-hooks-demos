@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
-type Props = {}
+// type Props = {}
 
-export default function UseEffectHook({}: Props) {
+export default function UseEffectHook() {
 
     const [valueInDependencyArray, setValueInDependencyArray] = useState<number>(0)
     const [numberIncrementedWithinUseEffect, setNumberIncrementedWithinUseEffect] = useState<number>(0)
@@ -33,13 +36,14 @@ export default function UseEffectHook({}: Props) {
             <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
             <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
             <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
-            
-            <pre>
-                {
-                    `
-type Props = {}
-export default function UseEffectHook({}: Props) {
+            <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
 
+            <SyntaxHighlighter language="javascript" style={nightOwl}>
+                {/* {codeString} */}
+            
+                {
+`
+export default function UseEffectHook() {
     const [valueInDependencyArray, setValueInDependencyArray] = useState<number>(0)
     const [numberIncrementedWithinUseEffect, setNumberIncrementedWithinUseEffect] = useState<number>(0)
     const [triggerRender, toggleTriggerRender] = useState<boolean>(false)
@@ -50,14 +54,14 @@ export default function UseEffectHook({}: Props) {
     },[valueInDependencyArray])
 
     return (
-            <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
-            <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
-            <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
-    )
-}
-                    `
+        <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
+        <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
+        <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
+    )}`
                 }
-            </pre>
+            
+            </SyntaxHighlighter>
+            
             {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
         </div>
     )
