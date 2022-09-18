@@ -15,3 +15,5 @@ import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'
 // import code which works without error
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 ```
+
+[great article on useCallback vs useMemo](kentcdodds.com/blog/usememo-and-usecallback)

@@ -6,6 +6,9 @@ import UseStateHook from './Components/UseStateHook'
 import UseEffectHook from './Components/UseEffectHook' 
 import UseContextHook from './Components/UseContextHook' 
 import UseMemoHook from './Components/UseMemoHook' 
+import UseReducerHook from './Components/UseReducerHook' 
+import UseCallbackHook from './Components/UseCallbackHook' 
+import UseRefHook from './Components/UseRefHook' 
 
 
 
@@ -19,10 +22,13 @@ const Home: NextPage = () => {
       </Head>
 
       
-        <UseStateHook />
-        <UseEffectHook />
+      {/* <UseStateHook />
+      <UseEffectHook />
       <UseContextHook />
       <UseMemoHook />
+      <UseReducerHook />
+      <UseCallbackHook /> */}
+      <UseRefHook />
 
     </div>
   )
