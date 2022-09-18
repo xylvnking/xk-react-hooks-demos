@@ -4,6 +4,8 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import UseStateHook from './Components/UseStateHook' 
 import UseEffectHook from './Components/UseEffectHook' 
+import UseContextHook from './Components/UseContextHook' 
+import UseMemoHook from './Components/UseMemoHook' 
 
 
 
@@ -16,8 +18,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="favicon.ico?v=1.1" />
       </Head>
 
-      <UseStateHook />
-      <UseEffectHook />
+      
+        <UseStateHook />
+        <UseEffectHook />
+      <UseContextHook />
+      <UseMemoHook />
 
     </div>
   )
