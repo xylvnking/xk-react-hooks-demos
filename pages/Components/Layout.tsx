@@ -30,7 +30,7 @@ export default function Layout({selectHook, hookSelected}: Props) {
   return (
     <div className={layoutStyles.nav}>
         <ul className={layoutStyles.list}>
-            <li className={layoutStyles.listItemTop}>home</li>
+            <li className={layoutStyles.listItemTop}><a className={layoutStyles.listItemTopLink} target='_blank' href='https://github.com/xylvnking/xk-react-hooks-demos'>github</a></li>
             {/* <li className={layoutStyles.listItem} onClick={() => handleClick(options[0])}> {options[0]} </li>
             <li className={layoutStyles.listItem} onClick={() => handleClick(options[1])}> {options[1]} </li>
             <li className={layoutStyles.listItem} onClick={() => handleClick(options[2])}> {options[2]} </li>
@@ -42,11 +42,11 @@ export default function Layout({selectHook, hookSelected}: Props) {
                 options.map((option, index) => {
                     if (hookSelected == option) {
                         return (
-                            <li className={`${layoutStyles.listItem} ${layoutStyles.listItemSelected}`} onClick={() => handleClick(options[index])}> {options[index]} </li>
+                            <li key={index} className={`${layoutStyles.listItem} ${layoutStyles.listItemSelected}`} onClick={() => handleClick(options[index])}> {options[index]} </li>
                             )
                         } else {
                             return (
-                            <li className={layoutStyles.listItem} onClick={() => handleClick(options[index])}> {options[index]} </li>
+                            <li key={index} className={layoutStyles.listItem} onClick={() => handleClick(options[index])}> {options[index]} </li>
 
                         )
                     }

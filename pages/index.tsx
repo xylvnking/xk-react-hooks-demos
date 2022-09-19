@@ -13,14 +13,46 @@ import Layout from './Components/Layout'
 
 import styles from '../styles/Home.module.css'
 import layoutStyles from '../styles/Layout.module.scss'
+import navStyles from '../styles/Nav.module.scss'
 
-
+// 'useState', 
+// 'useEffect',
+// 'useRef',
+// 'useMemo',
+// 'useCallback',
+// 'useContext',
+// 'useReducer'
+{/* <UseEffectHook />
+<UseStateHook />
+<UseContextHook />
+<UseMemoHook />
+<UseReducerHook />
+<UseCallbackHook />
+<UseRefHook /> */}
 
 
 
 const Home: NextPage = () => {
   const [hookSelected, setHookSelected] = useState<string>('')
   const [layoutOpen, setLayoutOpen] = useState<boolean>(true)
+  const RenderSwitch = () => {
+    switch(hookSelected) {
+      case 'useState':
+        return <UseStateHook />;
+      case 'useEffect':
+        return <UseEffectHook />;
+      case 'useContext':
+        return <UseContextHook />;
+      case 'useMemo':
+        return <UseMemoHook />;
+      case 'useReducer':
+        return <UseReducerHook />;
+      case 'useCallback':
+        return <UseCallbackHook />;
+      case 'useRef':
+        return <UseRefHook />;
+    }
+  }
   
   return (
     <div className={styles.container}>
@@ -33,7 +65,9 @@ const Home: NextPage = () => {
         {/* <nav className={layoutStyles.topNav}>
           <button onClick={() => setLayoutOpen(!layoutOpen)}>view hooks</button>
         </nav> */}
-        <h1>REACT TYPESCRIPT HOOKS</h1>
+        <nav className={navStyles.navContainer}>
+          <h1 className={navStyles.navTitle}>REACT TYPESCRIPT HOOKS</h1>
+        </nav>
 
       {/* <main className={layoutOpen ? `${layoutStyles.grid}` : `${layoutStyles.closed}`}> */}
       <main className={layoutStyles.grid}>
@@ -51,13 +85,16 @@ const Home: NextPage = () => {
         }
         
         <section className={layoutStyles.hookComponentsColumn}>
-          <UseEffectHook />
+          {
+            RenderSwitch()
+          }
+          {/* <UseEffectHook />
           <UseStateHook />
           <UseContextHook />
           <UseMemoHook />
           <UseReducerHook />
           <UseCallbackHook />
-          <UseRefHook />
+          <UseRefHook /> */}
         </section>
       </main>
     </div>

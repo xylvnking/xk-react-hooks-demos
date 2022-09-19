@@ -61,12 +61,22 @@
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-color: rgb(125, 125, 125);
+    backdrop-filter: blur(2px);
+    text-decoration: underline;
 
+
+    // &:hover {
+    //     // background-color: rgb(230, 230, 230);
+    //     color: rgb(177, 220, 255);
+    // }
+    
+}
+
+.listItemTopLink {
     &:hover {
-        background-color: rgb(230, 230, 230);
-        backdrop-filter: blur(2px);
-    }
+        color: rgb(121, 149, 171);
 
+    }
 }
 
 .listItem {
@@ -105,14 +115,18 @@
         flex-direction: column;
     }
     .layoutColumn {
-        height: 450px;
+        // height: 450px;
+        // display: none;
     }
     .nav {
-        // height: 100%;
-        // background-color: wheat;
-        height: 0px;
-        position: sticky;
+        // display: none;
+        height: 100%;
+        // top:100px;
+        // top:auto;
+        position: relative;
         width: 100%;
+        top: 1px;
+        // height: 0px;
     }
     .list {
         background-color: rgba(255, 255, 255, 0.786);
@@ -121,6 +135,7 @@
         
     }
     .listItem {
+        
         // background-color: rgba(255, 255, 255, 0.532);
     }
   }
