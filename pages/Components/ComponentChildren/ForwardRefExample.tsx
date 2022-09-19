@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react'
+import React, { useImperativeHandle, forwardRef } from 'react'
 
 function ForwardRefExample(props:any, ref:any) {
 // export default function ForwardRefExample(props:any) {
@@ -12,4 +12,4 @@ function ForwardRefExample(props:any, ref:any) {
   )
 }
 
-export default React.forwardRef(ForwardRefExample)
+export default forwardRef(ForwardRefExample)

@@ -17,3 +17,4 @@ import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 ```
 
 [great article on useCallback vs useMemo](kentcdodds.com/blog/usememo-and-usecallback)
+[useEffect vs useLayoutEffect](https://blog.saeloun.com/2022/07/28/difference-between-useeffect-and-useeffectlayout-hooks)

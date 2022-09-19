@@ -38,7 +38,7 @@ export default function UseCallbackHook() {
             <hr />
             <strong>useRef can be used to keep a value 'in state' without directly causing the DOM to rerender</strong>
             <p>useRef is similar to useState, except that it returns a mutable object instead of just the value it was initialized with.</p>
-            <SyntaxHighlighter language="javascript" style={nightOwl}>
+            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 let initialValue: number = 0
@@ -48,7 +48,7 @@ const [numberState, setNumberState] = useState<number>(0)
 }            
 </SyntaxHighlighter>
             
-<SyntaxHighlighter language="javascript" style={nightOwl}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 <button onClick={() => refContainer.current = refContainer.current + 1}>increase number</button>
@@ -68,7 +68,7 @@ const [numberState, setNumberState] = useState<number>(0)
             <p>we can access the current value of the reference within the .current property.</p>
             <hr />
             <strong>useRef is often used to access a DOM node imperatively</strong>
-<SyntaxHighlighter language="javascript" style={nightOwl}>
+            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 function TextInputWithFocusButton() {
@@ -104,7 +104,7 @@ function TextInputWithFocusButton() {
     <p>forward ref allows us to pass a reference into a child component</p>
     <p>the following component receives a reference which allows the button on the parent component to select it</p>
     <p>here we store the value of our fields in state, and set references to them</p>
-<SyntaxHighlighter language="javascript" style={nightOwl}>
+    <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 // UseRefHook.tsx
@@ -118,7 +118,7 @@ const inputRefTA = useRef<any>() // why doesn't the 'HTMLTextAreaElement' type w
 
 <hr />
 <p>then we create jsx to manipulate the data</p>
-<SyntaxHighlighter language="javascript" style={nightOwl}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 // UseRefHook.tsx
@@ -140,7 +140,7 @@ const inputRefTA = useRef<any>() // why doesn't the 'HTMLTextAreaElement' type w
 </SyntaxHighlighter>
 
 <p>Our ForwardRefExample component can now use the ref, so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</p>
-<SyntaxHighlighter language="javascript" style={nightOwl}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 // ForwardRefExample.tsx

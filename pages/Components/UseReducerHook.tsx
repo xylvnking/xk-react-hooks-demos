@@ -67,7 +67,7 @@ export default function UseReducerHook() {
 
 
             <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
-            <SyntaxHighlighter language="javascript" style={nightOwl}>
+            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
                 
             
                 {

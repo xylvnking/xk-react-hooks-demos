@@ -61,7 +61,7 @@ export default function UseContextHook() {
 
             <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
             <button onClick={() => setDarkMode(!darkMode)}>toggle {darkMode ? 'light' : 'dark'} mode</button>
-            <SyntaxHighlighter language="javascript" style={nightOwl}>
+            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
                 {/* {codeString} */}
             
                 {
