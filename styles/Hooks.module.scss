@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Mono:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 .container {
     
@@ -26,6 +26,7 @@
         // background-color: rgb(177, 220, 255);
         padding: 10px;
         // width: 25%;
+        // font-family: 'Roboto Mono', monospace;
         span {
             margin: 10px;
             padding: 10px;
@@ -34,7 +35,19 @@
         }
     }
     h2 {
-
+        font-family: 'Roboto Mono', monospace;
+    }
+    h3 {
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 400;
+        padding-left: 50px;
+        em {
+            // background-color: rgb(177, 255, 177);
+            // background-color: rgb(177, 255, 177);
+            // background-color: rgb(177, 220, 255);
+            
+            // padding: 2px;
+        }
     }
     ul {
         padding-left: 20px;
@@ -42,13 +55,35 @@
         list-style: none;
         // list-style-type: circle;
         list-style-type: square;
-
+        color: rgb(40, 40, 40);
+        
         li {
             padding: 5px;
+            margin: 5px;
         }
     }
-
+    
 }
+.listTitle {
+    list-style: none;
+    color: rgb(16, 16, 16);
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    // font-family: 'Roboto Mono', monospace;
+}
+
+.blueText {
+    background-color: rgb(177, 220, 255);   
+    padding: 1px;
+}
+.redText {
+    background-color: rgb(255, 177, 177);
+    padding: 1px; 
+}
+.lightText {
+    opacity: 75%;
+}
+
 
 .link {
     // color: cornflowerblue;

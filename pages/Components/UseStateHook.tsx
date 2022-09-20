@@ -23,6 +23,7 @@ export default function UseStateHook({}: Props) {
             <p>value held in state: {numberToIncrease}</p>
             <p>regular let variable: {anotherNumber}</p>
             <button onClick={() => increaseBothNumbers()}>re-render component</button>
+            {/* common mistake: using state instead of ref */}
             <pre>
                 {
                     `
