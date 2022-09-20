@@ -1,10 +1,11 @@
 import React, { useImperativeHandle, forwardRef } from 'react'
-
+// import hookStyles from '../../../styles/Hooks.module.scss'
 function ForwardRefExample(props:any, ref:any) {
 // export default function ForwardRefExample(props:any) {
 
     return (
-        <input
+        <textarea
+        // className={hookStyles.textAreaFromExample}
         ref={ref}
     {...props}
 

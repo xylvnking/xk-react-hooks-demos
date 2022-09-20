@@ -14,7 +14,7 @@
     
 
     background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/memphis-mini.png');
-
+    
     position: sticky;
     top:0px;
     
@@ -29,6 +29,9 @@
     // display: flex;
     // flex-direction: column;
     // max-width: 100vw;
+    
+    // background-image: url('https://media.discordapp.net/attachments/1007727971571875952/1021883369170145401/xylvn_cyberpunk_icon_495a07e6-e9e7-489e-aef0-87d256d07744.png?width=1098&height=1098');
+    // background-image: url('https://media.discordapp.net/attachments/1007727971571875952/1021883408311390298/xylvn_cyberpunk_icon_1daf733b-8c0a-415d-8e41-ae579e991c9f.png?width=1098&height=1098');
     
 }
 
@@ -135,7 +138,13 @@
         
     }
     .listItem {
-        
-        // background-color: rgba(255, 255, 255, 0.532);
+        position: sticky;
+        // background-color: rgba(255, 255, 255, 0.786);
+        top:0px;
+        background-color: rgba(255, 255, 255, 0.883);
+    }
+    .listItemSelected {
+
+        background-color: rgb(177, 220, 255);
     }
   }

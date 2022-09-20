@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 // type Props = {}
@@ -119,14 +118,14 @@ export default function UseEffectHook() {
         const [valueWhichDoesNotTriggerUseEffect, setValueWhichDoesNotTriggerUseEffect] = useState<number>(0)
 
         //then let's create the useEffect itself:
-
         useEffect(() => {
             setNumberIncrementedWithinUseEffect(numberIncrementedWithinUseEffect + 1)
         },[valueInDependencyArray])
 
-        // then let's create the buttons to add the neccessary functionality
-
         return (
+            <p>value in the dependency array: {valueInDependencyArray}</p>
+            <p>value which does not trigger useEffect: {valueWhichDoesNotTriggerUseEffect}</p>
+            <p>number incremented within useEffect: {numberIncrementedWithinUseEffect}</p>
             <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
             <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
             <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>

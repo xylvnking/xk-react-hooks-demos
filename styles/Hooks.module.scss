@@ -184,6 +184,8 @@
             // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         }
     }
+
+    
 }
 
 .flexDesktopRowMobileColumn {
@@ -193,5 +195,33 @@
         flex-direction: column;
 
     }
+
+}
+
+.textAreaContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.textAreaFromExample {
+    // background-color: aqua;
+    border-style: none;
+    resize: none;
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
+    font-family: 'Roboto Mono', monospace;
+    // display: flex;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    // background-color: aqua;
 
 }
