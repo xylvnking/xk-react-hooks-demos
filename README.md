@@ -18,3 +18,9 @@ import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 [great article on useCallback vs useMemo](kentcdodds.com/blog/usememo-and-usecallback)
 [useEffect vs useLayoutEffect](https://blog.saeloun.com/2022/07/28/difference-between-useeffect-and-useeffectlayout-hooks)
+
+[amazing example how how to make effects self-sufficient](https://overreacted.io/a-complete-guide-to-useeffect/#making-effects-self-sufficient)
+
+## react
+
+[React won’t try to “match up” elements with the same keys between different parents](https://overreacted.io/react-as-a-ui-runtime/#lists)

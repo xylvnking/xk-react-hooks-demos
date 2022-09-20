@@ -37,74 +37,71 @@ export default function UseEffectHook() {
             </header>
             <main>
                 <h2> {'>'} useEffect designates a 'side effect' of the initial render</h2>
-                    <h3>This means that <strong>useEffect fires off the code within the callback function <em className={hookStyles.blueText}>after</em> the component is rendered</strong> && <strong>does <em className={hookStyles.blueText}>not</em> block browser painting.</strong></h3>
-                    <section>
-                        <p>useEffect is one of the most common React Hooks. We primarily use it to run blocks of code which are important to the application, but shouldn't block the initial page render.</p>
-                        <p>It runs its provided <em className={hookStyles.blueText}>callback function</em> on every render by default, but by including a <em className={hookStyles.blueText}>dependency array</em> we are given control over this behaviour. Providing an empty dependency array as the second argument states that the effect doesn't use any value that participates in the React data flow.</p>
-                        <p>When we provide a value for the dependency array, we're stating that the effect is relevant to the data flow and that the callback should be fired off.</p>
-                    </section>
-<h2>useEffect <em>'hello world'</em>:</h2>
-                    <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+                <h3>This means that <strong>useEffect fires off the code within the callback function <em className={hookStyles.blueText}>after</em> the component is rendered</strong> && <strong>does <em className={hookStyles.blueText}>not</em> block browser painting.</strong></h3>
+                <section>
+                    <p>useEffect is one of the most common React Hooks. We primarily use it to run blocks of code which are important to the application, but shouldn't block the initial page render.</p>
+                    <p>It runs its provided <em className={hookStyles.blueText}>callback function</em> on every render by default, but by including a <em className={hookStyles.blueText}>dependency array</em> we are given control over this behaviour. Providing an empty dependency array as the second argument states that the effect doesn't use any value that participates in the React data flow.</p>
+                    <p>When we provide a value for the dependency array, we're stating that the effect is relevant to the data flow and that the callback should be fired off to maintain synchronization. If the value within the dependency array hasn't changed since the last render, we're telling React that it can skip the effect because the data is already in sync.</p>
+                    <p>Since setting state won't trigger a re-render if the value is the same, we're 'safe' to set state within a useEffect but useCaution to avoid situations like those listed below.</p>
+                    <p>The <em className={hookStyles.blueText}><strong>cleanup function</strong></em> runs when the component is unmounted. A common use is to cancel setting state if it was unmounted during data fetching.</p>
+                    <p>In general, effects should minimize the number of dependencies and be strict about including them.</p>
+                    <p>It can be helpful to create a mental model of effects by thinking of them as <em className={hookStyles.blueText}>synchronization</em> instead of as <em className={hookStyles.redText}>triggers</em>.</p>
+                </section>
+                <h2>useEffect <em>'hello world'</em>:</h2>
+                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
 {`
     useEffect(() => {
         // do thing
         return () => {
         // handle what happens when you stop doing thing
-        };
-    }, [/*dependency array*/]); //whatever is here will trigger a render when it changes
+        }
+    }, [/*dependency array*/]) //whatever is here will trigger a render when it changes
 
 `}
-</SyntaxHighlighter>
-                    <hr />
+                </SyntaxHighlighter>
+
+                <hr />
+
                 <ul>
-                    {/* <li>What this means is that useEffect fires off <em>after</em> the component is rendered and does <strong>not</strong> block browser painting.</li> */}
-                    {/* <h4>Common use cases for useEffect:</h4> */}
-                    {/* <li className={hookStyles.listTitle}><strong>✅ Common use cases for useEffect:</strong></li> */}
-                    <li className={hookStyles.listTitle}><strong>When to use useEffect:</strong></li>
+                    <li className={hookStyles.listTitle}><strong>useEffect is great for:</strong></li>
                     <li>Fetching data from an external API</li>
                     <li>Sending analytics data to an external API</li>
-                    <li>When a component receives data via props and populates its own local state with it</li>
-                    <li>In most cases where you would have used <em className={hookStyles.blueText}>componentDidMount</em> or <em className={hookStyles.blueText}>componentDidUpdate</em></li>
-                    <li>Directly updating the DOM. </li>
-                    <li>Timers</li>
-                    
-                    
-                    {/* <li>What this means is that code inside of a useEffect can be made to run every re-render, only when the component initially loads (or in removed), or according to when a specific value changes.</li> */}
-                    {/* <li>useEffect is the functional component replacement for componentDidMount and componentDidUpdate.</li> */}
-                    {/* <li>useEffect is commonly causes problems for beginners who create inifinite loop by assing in a function which updates the piece of state on which the effect is dependent.</li> */}
-                    {/* <li>useEffect takes a callback function to be executed, and a dependency array to dictate when that function is executed. If there is no array, the function is called on every render. If there is an empty array the function is called only once when the component is mounted. If there are any values within the array, the function will call when the component loads as well as whenever the value within the dependency array changes.</li> */}
+                    <li>When a component populates its local state with data it receives via props</li>
+                    <li>Most cases where you would have used <em className={hookStyles.blueText}>componentDidMount</em> or <em className={hookStyles.blueText}>componentDidUpdate</em></li>
+                    <li>Synchronizing our component with data being delivered to it from any external source.</li>
+                    {/* <li>Directly updating the DOM. </li> */}
+                    {/* <li>Timers</li> */}
                 </ul>
 
                 <hr />
 
                 <ul>
-                    {/* <li className={hookStyles.listTitle}><strong>❌ Common mistakes when using useEffect:</strong></li> */}
                     <li className={hookStyles.listTitle}><strong>Common mistakes:</strong></li>
-                    <li><span className={hookStyles.redText}>Causing an infinite loop</span> by updating state within the callback function and <strong>forgetting to include a dependency array.</strong></li>
-                    <li><span className={hookStyles.redText}>Causing an infinite loop</span> by updating state within the callback function and <strong>populating the dependency array with that same state.</strong></li>
-                    <li><span className={hookStyles.redText}><em>Relying</em> on data fetched within the callback to create a user interface.</span> It's common to fetch data, store it in state, and then map over that state to create a dynamic user interface - but a check must be performed to <span className={hookStyles.blueText}>ensure the component doesn't break if the fetch within the useEffect callback doesn't deliver the expected data.</span> This is commonly done with a simple && conditional operator, or a ternary.</li>
+                    <li><span className={hookStyles.redText}>Causing an infinite loop</span> by updating state within the callback function and <span className={hookStyles.redText}>forgetting to include a dependency array.</span></li>
+                    <li><span className={hookStyles.redText}>Returning</span> <span className={hookStyles.lightText}>(something other than a cleanup function)</span> directly. </li>
+                    <li><span className={hookStyles.redText}>Causing an infinite loop</span> by updating state within the callback function and <span className={hookStyles.redText}>populating the dependency array with that same state.</span></li>
+                    <li><span className={hookStyles.redText}><em>Relying</em> on data fetched within the callback to create a user interface.</span> It's common to fetch data, store it in state, and then map over that state to create a dynamic user interface - but <span className={hookStyles.blueText}>a check must be performed to ensure the component doesn't break if the fetch within the useEffect callback doesn't deliver the expected data.</span> This is commonly done with a simple && conditional operator, or a ternary.</li>
+                    <li>Calling functions <span className={hookStyles.redText}><em>that aren't declared within the effect itself</em></span> and which aren't pure computations.</li>
                 </ul>
-                    <small><em><strong>PS</strong> - useLayoutEffect is useEffect except it blocks the initial render, and is useful for visual elements like modals</em></small>
+                <small><em><strong>PS</strong> - useLayoutEffect is useEffect except it blocks the initial render, and is useful for visual elements like modals</em></small>
             </main>
+
             <hr />
 
-<section className={hookStyles.exampleSection}>
-    <h2>A concrete example:</h2>
-    <section>
-        <p>valueInDependencyArray: {valueInDependencyArray}</p>
-        <p>valueWhichDoesNotTriggerUseEffect: {valueWhichDoesNotTriggerUseEffect}</p>
-        <p>number which is incremented whenever useEffect is triggered: {numberIncrementedWithinUseEffect}</p>
-        {/* <p>regular let variable: {anotherNumber}</p> */}
-        <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
-        <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
-        <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
-    </section>
-                
+            <section className={hookStyles.exampleSection}>
+                <h2>A concrete example:</h2>
+                <section className={hookStyles.codeExampleText}>
+                        <p>value in the dependency array: {valueInDependencyArray}</p>
+                        <p>value which does not trigger useEffect: {valueWhichDoesNotTriggerUseEffect}</p>
+                        <p>number incremented within useEffect: {numberIncrementedWithinUseEffect}</p>
+                    <div className={hookStyles.flexDesktopRowMobileColumn}>
+                        <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>increment value which does not trigger useEffect</button>
+                        <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render entire component</button>
+                        <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
+                    </div>
+                </section>
 
-
-
-    
-    <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
     {`
     export default function UseEffectHook() {
         // first let's create some pieces of state to work with
@@ -138,68 +135,8 @@ export default function UseEffectHook() {
 
 
     `}
-    </SyntaxHighlighter>
-</section>
-
-
-
-            <h3></h3>
-            {/* <section className={hookStyles.exampleContainer}>
-                <p>valueInDependencyArray: {valueInDependencyArray}</p>
-                <p>valueWhichDoesNotTriggerUseEffect: {valueWhichDoesNotTriggerUseEffect}</p>
-                <p>number which is incremented whenever useEffect is triggered: {numberIncrementedWithinUseEffect}</p>
-                
-                <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
-                <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
-                <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
-            </section> */}
-
-{/* 
-            <details>
-                <summary>useLayoutEffect:</summary>
-                <p><strong>useLayoutEffect</strong> works the same way, except that it fires synchronously once DOM manipulations are complete, earlier than useEffect, and blocks rendering until it completes.</p>
-                <p>useLayoutEffect is used when we're manipulating the DOM according to information which can only be gathered after the initial DOM manipulation has completed.</p>
-                <p>For example if we want a modal to pop up at the position of a button, using useLayoutEffect ensures that the modal won't first appear somewhere else and then jump to the correct position.</p>
-            </details> */}
-
-            {/* <p>valueInDependencyArray: {valueInDependencyArray}</p>
-            <p>valueWhichDoesNotTriggerUseEffect: {valueWhichDoesNotTriggerUseEffect}</p>
-            <p>number which is incremented whenever useEffect is triggered: {numberIncrementedWithinUseEffect}</p>
-            
-            <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
-            <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
-            <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
-             */}
-
-
-
-            
-
-            
-            {/* <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', flex: 1}}>
-
-                {
-`
-export default function UseEffectHook() {
-    const [valueInDependencyArray, setValueInDependencyArray] = useState<number>(0)
-    const [numberIncrementedWithinUseEffect, setNumberIncrementedWithinUseEffect] = useState<number>(0)
-    const [triggerRender, toggleTriggerRender] = useState<boolean>(false)
-    const [valueWhichDoesNotTriggerUseEffect, setValueWhichDoesNotTriggerUseEffect] = useState<number>(0)
-
-    useEffect(() => {
-        setNumberIncrementedWithinUseEffect(numberIncrementedWithinUseEffect + 1)
-    },[valueInDependencyArray])
-
-    return (
-        <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>valueWhichDoesNotTriggerUseEffect</button>
-        <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component</button>
-        <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
-    )}`
-                }
-            
-            </SyntaxHighlighter> */}
-            
-            {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
+                </SyntaxHighlighter>
+            </section>
         </div>
     )
 }

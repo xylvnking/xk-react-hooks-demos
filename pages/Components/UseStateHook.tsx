@@ -24,6 +24,10 @@ export default function UseStateHook({}: Props) {
             <p>regular let variable: {anotherNumber}</p>
             <button onClick={() => increaseBothNumbers()}>re-render component</button>
             {/* common mistake: using state instead of ref */}
+
+            {/* setting the state to the same value it already is renders it an idempotent operation */}
+
+            <h1>state doesn't change over time, it's always the component being called again</h1>
             <pre>
                 {
                     `

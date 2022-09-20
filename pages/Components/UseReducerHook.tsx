@@ -46,6 +46,9 @@ export default function UseReducerHook() {
           }
     }
 
+
+    // https://overreacted.io/a-complete-guide-to-useeffect/#decoupling-updates-from-actions
+
     return (
         <div className={hookStyles.container}>
             <h1>useReducer</h1>

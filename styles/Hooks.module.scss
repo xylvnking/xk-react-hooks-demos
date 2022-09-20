@@ -43,7 +43,7 @@
         // background-color: rgb(177, 220, 255);
         padding: 10px;
         // width: 25%;
-        // font-family: 'Roboto Mono', monospace;
+        
         span {
             margin: 10px;
             padding: 10px;
@@ -150,16 +150,48 @@
     // const [valueInDependencyArray, setValueInDependencyArray] = useState<number>(0)
 
 .exampleSection {
-    border-radius: 10px;
-    border-width: 2px;
-    border-color: black;
-    border-style: solid;
+    // border-radius: 10px;
+    // border-width: 2px;
+    // border-color: black;
+    // border-style: solid;
 
-    padding:40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    // padding:40px;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
 
     section {
         margin-bottom: 20px;
+        // font-family:Arial, Helvetica, sans-serif
+        font-family: 'Roboto Mono', monospace;
     }
+
+    button {
+        font-family: 'Roboto Mono', monospace;
+        border-radius: 10px;
+        border-style: none;
+        padding: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        &:hover {
+            transition: box-shadow .25s;
+            // box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            // box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        &:active {
+            transition: box-shadow .1s;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+    }
+}
+
+.flexDesktopRowMobileColumn {
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 750px) { 
+        flex-direction: column;
+
+    }
+
 }
