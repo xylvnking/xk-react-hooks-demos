@@ -35,6 +35,11 @@ main {
   
 }
 
+hr {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {
