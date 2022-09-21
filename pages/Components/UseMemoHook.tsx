@@ -3,10 +3,12 @@ import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { useRouter } from 'next/router'
 
 // type Props = {}
 
 export default function UseMemoHook() {
+    const router = useRouter()
 
     const [triggerRender, toggleTriggerRender] = useState<boolean>(false)
     const [nonMemorizedValue, setNonMemorizedValue] = useState<number>(0)
@@ -21,7 +23,9 @@ export default function UseMemoHook() {
         }
         return valueOne;
     }
-    
+    useEffect(() => {
+        router.push('/?hook=useMemo', undefined, { shallow: true })
+    }, [])
     return (
         <div className={hookStyles.container}>
             

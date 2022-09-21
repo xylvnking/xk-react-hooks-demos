@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { useRouter } from 'next/router'
 
 
 
 export default function UseStateHook() {
+    const router = useRouter()
 
     const [numberToIncrease, setNumberToIncrease] = useState<number>(0)
     let numberNotHeldInState: number = 0
@@ -14,6 +16,10 @@ export default function UseStateHook() {
         setNumberToIncrease(numberToIncrease + 1)
         numberNotHeldInState = numberNotHeldInState + 1
     }
+
+    useEffect(() => {
+        router.push('/?hook=useState', undefined, { shallow: true })
+    }, [])
 
     return (
         <div className={hookStyles.container}>

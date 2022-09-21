@@ -1,10 +1,12 @@
-import React, {useState, useCallback} from 'react'
+import React, {useState, useCallback, useEffect} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import CallbackHookChild from './ComponentChildren/CallbackHookChild';
+import { useRouter } from 'next/router'
 
 export default function UseCallbackHook() {
+    const router = useRouter()
     const [number, setNumber] = useState<number>(1)
     if (number <= 0) {
         setNumber(1)
@@ -25,7 +27,9 @@ export default function UseCallbackHook() {
             return [number, number + 1, number + 2]
         }, [number, number, number]
     )
-
+    useEffect(() => {
+        router.push('/?hook=useCallback', undefined, { shallow: true })
+    }, [])
     
     return (
         <div className={hookStyles.container}>

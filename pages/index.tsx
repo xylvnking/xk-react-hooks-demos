@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import UseStateHook from './Components/UseStateHook' 
@@ -10,10 +10,13 @@ import UseReducerHook from './Components/UseReducerHook'
 import UseCallbackHook from './Components/UseCallbackHook' 
 import UseRefHook from './Components/UseRefHook' 
 import Layout from './Components/Layout' 
+import HomePage from './Components/HomePage'
 
 import styles from '../styles/Home.module.css'
 import layoutStyles from '../styles/Layout.module.scss'
 import navStyles from '../styles/Nav.module.scss'
+
+import { useRouter } from 'next/router'
 
 // 'useState', 
 // 'useEffect',
@@ -32,7 +35,10 @@ import navStyles from '../styles/Nav.module.scss'
 
 
 
+
 const Home: NextPage = () => {
+  const router = useRouter()
+
   const [hookSelected, setHookSelected] = useState<string>('')
   const [layoutOpen, setLayoutOpen] = useState<boolean>(true)
   const RenderSwitch = () => {
@@ -51,8 +57,24 @@ const Home: NextPage = () => {
         return <UseCallbackHook />;
       case 'useRef':
         return <UseRefHook />;
+      default:
+        // router.push('/', undefined, { shallow: true })
+        return <HomePage />
     }
   }
+
+  useEffect(() => {
+    if (router.query.hook && typeof router.query.hook == 'string') {
+      if (router.query.hook == 'home') {
+        setHookSelected(router.query.hook)
+        router.push('/', undefined, { shallow: true })
+      } else {
+        setHookSelected(router.query.hook)
+
+      }
+    }
+
+  }, [router.query])
   
   return (
     <div className={styles.container}>
@@ -66,7 +88,7 @@ const Home: NextPage = () => {
           <button onClick={() => setLayoutOpen(!layoutOpen)}>view hooks</button>
         </nav> */}
         <nav className={navStyles.navContainer}>
-          <h1 className={navStyles.navTitle}>REACT TYPESCRIPT HOOKS</h1>
+          <h1 className={navStyles.navTitle}>REACT TYPESCRIPT HOOKS <span style={{fontSize: '15px'}}>//// personal reference docs by <a target='_blank' href='https://github.com/xylvnking'>xylvn king</a></span></h1>
         </nav>
 
       {/* <main className={layoutOpen ? `${layoutStyles.grid}` : `${layoutStyles.closed}`}> */}
@@ -74,6 +96,7 @@ const Home: NextPage = () => {
         {
           // layoutOpen 
           // &&
+            // hookSelected &&
           <section className={layoutStyles.layoutColumn}>
             {/* <button onClick={() => setLayoutOpen(!layoutOpen)}>toggle layout</button> */}
             <Layout 
@@ -88,13 +111,6 @@ const Home: NextPage = () => {
           {
             RenderSwitch()
           }
-          {/* <UseEffectHook />
-          <UseStateHook />
-          <UseContextHook />
-          <UseMemoHook />
-          <UseReducerHook />
-          <UseCallbackHook />
-          <UseRefHook /> */}
         </section>
       </main>
     </div>

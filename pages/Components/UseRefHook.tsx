@@ -1,14 +1,16 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ForwardRefExample from './ComponentChildren/ForwardRefExample';
+import { useRouter } from 'next/router'
 
 
 // const initialValue: number = 0
 
 // export default function UseCallbackHook() {
 export default function UseRefHook() {
+    const router = useRouter()
     
     let initialValue: number = 0
     const refContainer = useRef(initialValue);
@@ -28,6 +30,9 @@ export default function UseRefHook() {
     const inputRefTA = useRef<any>() // why doesn't the 'HTMLTextAreaElement' type work here?
     
     // const inputRefTA = useRef<HTMLDivElement>()
+    useEffect(() => {
+        router.push('/?hook=useRef', undefined, { shallow: true })
+    }, [])
     
     return (
         <div className={hookStyles.container}>

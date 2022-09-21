@@ -2,10 +2,13 @@ import React, {useEffect, useState} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { useRouter } from 'next/router'
 
 // type Props = {}
 
 export default function UseEffectHook() {
+    const router = useRouter()
+
 
     const [valueInDependencyArray, setValueInDependencyArray] = useState<number>(0)
     const [numberIncrementedWithinUseEffect, setNumberIncrementedWithinUseEffect] = useState<number>(0)
@@ -16,6 +19,9 @@ export default function UseEffectHook() {
         setNumberIncrementedWithinUseEffect(numberIncrementedWithinUseEffect + 1)
     },[valueInDependencyArray])
 
+    useEffect(() => {
+        router.push('/?hook=useEffect', undefined, { shallow: true })
+    }, [])
 
     // infinite loop hello world example
     // const [state, setState] = useState(0);
@@ -26,7 +32,7 @@ export default function UseEffectHook() {
         <div className={hookStyles.container}>
             <header>
                 <h1><small>use</small><span>Effect</span></h1>
-                <nav>
+                <nav id='yes'>
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>official documentation</a>
                     {/* <br /> */}
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>source code</a>

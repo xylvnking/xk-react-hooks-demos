@@ -3,6 +3,7 @@ import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { useRouter } from 'next/router'
 
 // type Props = {}
 const themes = {
@@ -44,7 +45,12 @@ function Toolbar() {
   
 
 export default function UseContextHook() {
+    const router = useRouter()
     const [darkMode, setDarkMode] = useState<boolean>(true)
+
+    useEffect(() => {
+        router.push('/?hook=useContext', undefined, { shallow: true })
+    }, [])
 
     return (
         
