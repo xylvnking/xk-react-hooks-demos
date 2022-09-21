@@ -30,12 +30,14 @@ export default function UseStateHook() {
            
             <main>
                 <h2> {'>'} useEffect designates a 'side effect' of the initial render</h2>
-                <h3>This means that <strong>useEffect fires off the code within the callback function <em className={hookStyles.blueText}>after</em> the component is rendered</strong> && <strong>does <em className={hookStyles.blueText}>not</em> block browser painting.</strong></h3>
+                <h3>This means that <strong>useEffect fires off the code within the callback function <em className={hookStyles.blueText}>after</em> the component is rendered</strong> && <strong>does <em className={hookStyles.blueText}>not</em> block browser painting</strong></h3>
                 <section>
-                    <p>useState provides us with a value <em className={hookStyles.blueText}>'held in state'</em>, and a function to update it.</p>
-                    <p>What this means is that the value won't change when the component re-renders.</p>
-                    <p>useState is extremely useful for having responsive and dynamic user interfaces</p>
-                    <p>state doesn't change over time, it's always the component being called again</p>
+                    <ul>
+                        <li>useState provides us with a value <em className={hookStyles.blueText}>'held in state'</em>, and a function to update it.</li>
+                        <li>What this means is that the value won't change when the component re-renders.</li>
+                        <li>useState is extremely useful for having responsive and dynamic user interfaces</li>
+                        <li>state doesn't change over time, it's always the component being called again</li>
+                    </ul>
                 </section>
             <h2>useState <em>'hello world'</em>:</h2>
             <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>

@@ -38,13 +38,15 @@ export default function UseEffectHook() {
                 <h2> {'>'} useEffect designates a 'side effect' of the initial render</h2>
                 <h3>This means that <strong>useEffect fires off the code within the callback function <em className={hookStyles.blueText}>after</em> the component is rendered</strong> && <strong>does <em className={hookStyles.blueText}>not</em> block browser painting.</strong></h3>
                 <section>
-                    <p>useEffect is one of the most common React Hooks. We primarily use it to run blocks of code which are important to the application, but shouldn't block the initial page render.</p>
-                    <p>It runs its provided <em className={hookStyles.blueText}>callback function</em> on every render by default, but by including a <em className={hookStyles.blueText}>dependency array</em> we are given control over this behaviour. Providing an empty dependency array as the second argument states that the effect doesn't use any value that participates in the React data flow.</p>
-                    <p>When we provide a value for the dependency array, we're stating that the effect is relevant to the data flow and that the callback should be fired off to maintain synchronization. If the value within the dependency array hasn't changed since the last render, we're telling React that it can skip the effect because the data is already in sync.</p>
-                    <p>Since setting state won't trigger a re-render if the value is the same, we're 'safe' to set state within a useEffect but useCaution to avoid situations like those listed below.</p>
-                    <p>The <em className={hookStyles.blueText}><strong>cleanup function</strong></em> runs when the component is unmounted. A common use is to cancel setting state if it was unmounted during data fetching.</p>
-                    <p>In general, effects should minimize the number of dependencies and be strict about including them.</p>
-                    <p>It can be helpful to create a mental model of effects by thinking of them as <em className={hookStyles.blueText}>synchronization</em> instead of as <em className={hookStyles.redText}>triggers</em>.</p>
+                    <ul>
+                        <li>useEffect is one of the most common React Hooks. We primarily use it to run blocks of code which are important to the application, but shouldn't block the initial page render.</li>
+                        <li>It runs its provided <em className={hookStyles.blueText}>callback function</em> on every render by default, but by including a <em className={hookStyles.blueText}>dependency array</em> we are given control over this behaviour. Providing an empty dependency array as the second argument states that the effect doesn't use any value that participates in the React data flow.</li>
+                        <li>When we provide a value for the dependency array, we're stating that the effect is relevant to the data flow and that the callback should be fired off to maintain synchronization. If the value within the dependency array hasn't changed since the last render, we're telling React that it can skip the effect because the data is already in sync.</li>
+                        <li>Since setting state won't trigger a re-render if the value is the same, we're 'safe' to set state within a useEffect but useCaution to avoid situations like those listed below.</li>
+                        <li>The <em className={hookStyles.blueText}><strong>cleanup function</strong></em> runs when the component is unmounted. A common use is to cancel setting state if it was unmounted during data fetching.</li>
+                        <li>In general, effects should minimize the number of dependencies and be strict about including them.</li>
+                        <li>It can be helpful to create a mental model of effects by thinking of them as <em className={hookStyles.blueText}>synchronization</em> instead of as <em className={hookStyles.redText}>triggers</em>.</li>
+                    </ul>
                 </section>
                 <h2>useEffect <em>'hello world'</em>:</h2>
                 <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
@@ -89,7 +91,8 @@ export default function UseEffectHook() {
 
             <section className={hookStyles.exampleSection}>
                 <h2>A concrete example:</h2>
-                <section className={hookStyles.codeExampleText}>
+                <section >
+                
                         <p>value in the dependency array: {valueInDependencyArray}</p>
                         <p>value which does not trigger useEffect: {valueWhichDoesNotTriggerUseEffect}</p>
                         <p>number incremented within useEffect: {numberIncrementedWithinUseEffect}</p>

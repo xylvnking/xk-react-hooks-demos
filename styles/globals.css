@@ -9,6 +9,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-family: 'IBM Plex Mono', monospace;
     /* font-family: 'Roboto Mono', monospace; */
+    
 }
 
 a {
@@ -16,6 +17,13 @@ a {
   color: rgb(147, 182, 211);
   /* text-decoration: none; */
 
+}
+
+p {
+  overflow-wrap: break-word;
+  hyphens: auto;
+  /* max-width: 100%; */
+  /* background-color: aqua; */
 }
 
 * {

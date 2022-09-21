@@ -9,8 +9,8 @@ export default function CallbackHookChild(props:any) {
   }, [props.getItemsCallback])
 
   return (
-    <ul>
-      {items.map(item => <li key={item}>{item}</li>)}
+    <ul style={{display: 'flex', listStyle: 'none'}}>
+      {items.map(item => <li style={{margin: '0px', padding: '0px', paddingRight: '10px'}}key={item}>{item}</li>)}
     </ul>
   )
 }

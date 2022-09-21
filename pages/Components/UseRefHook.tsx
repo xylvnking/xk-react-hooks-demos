@@ -23,7 +23,7 @@ export default function UseRefHook() {
     };
 
     // for useImperativeHandle
-    const [value, setValue] = useState('red')
+    const [value, setValue] = useState('hey whatsup this is a value')
     const inputRef = useRef<HTMLInputElement>()
     const inputRefTA = useRef<any>() // why doesn't the 'HTMLTextAreaElement' type work here?
     
@@ -46,13 +46,15 @@ export default function UseRefHook() {
                 <h2> {'>'} useRef provides us with a way to refer to data which persists between re-renders <em className={hookStyles.blueText}>without causing a re-render when changed</em></h2>
                 <h3>This means that <em className={hookStyles.blueText}><strong>useRef is similar to useState</strong> but it also allows us to store a reference to a DOM element.</em></h3>
                 <section>
-                    <p>useRef returns a mutable object whose .current property is initialized to the passed argument.</p>
-                    <p>We can useRef to keep track of data between renders which might not need to change very often if at all once initialized.</p>
-                    <p>Since variables in React components are instanced and re-initialized on every render, useRef is one way React allows us to optimize our applications (see <a>useMemo</a> and <a>useCallback</a>).</p>
-                    <p>Great for if there's lots of stateful chaining happening but a render shouldn't happen until it's finished.</p>
-                    <p>useRef is a way to hold data 'in state' without directly causing a re-render when it changes</p>
-                    <p>modifying the value of the reference by means of the current property does not produce a new render</p>
-                    <p>Since useState should generally only be tied to variabled used by a UI element, we can useRef to have persistent data independent of the UI.</p>
+                    <ul>
+                        <li>useRef returns a mutable object whose .current property is initialized to the passed argument.</li>
+                        <li>We can useRef to keep track of data between renders which might not need to change very often if at all once initialized.</li>
+                        <li>Since variables in React components are instanced and re-initialized on every render, useRef is one way React allows us to optimize our applications (see <a>useMemo</a> and <a>useCallback</a>).</li>
+                        <li>Great for if there's lots of stateful chaining happening but a render shouldn't happen until it's finished.</li>
+                        <li>useRef is a way to hold data 'in state' without directly causing a re-render when it changes</li>
+                        <li>modifying the value of the reference by means of the current property does not produce a new render</li>
+                        <li>Since useState should generally only be tied to variabled used by a UI element, we can useRef to have persistent data independent of the UI.</li>
+                    </ul>
                 </section>
             <h2>useRef <em>'hello world'</em>:</h2>
             <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
@@ -87,7 +89,8 @@ export default function UseRefHook() {
             <section className={hookStyles.exampleSection}>
             <h2>Concrete examples:</h2>
             <strong>Storing persistant data which doesn't trigger a re-render when its changed:</strong>
-                <section className={hookStyles.codeExampleText}>
+                
+                <section>
                     <p>value held in state: </p>
                     <p>number not held in state:</p>
                     <p>refContainer.current: {refContainer.current}</p>
@@ -124,8 +127,8 @@ const [numberState, setNumberState] = useState<number>(0)
             <section className={hookStyles.codeExampleText}>    
                 <p>Clicking the button sets focus onto the input field using a reference.</p>
                 <div className={hookStyles.flexDesktopRowMobileColumn}>
-                    <input ref={inputField} type="text" />
-                    <button onClick={onButtonClick}>Focus the input</button>
+                    <input ref={inputField} type="text" className={hookStyles.inputLikeButton} />
+                    <button onClick={onButtonClick} >Focus the input</button>
                 </div>
             </section>
             
@@ -173,11 +176,12 @@ function TextInputWithFocusButton() {
 
     <h3>The following example shows us passing a reference to an input field down to a separate child component containing <em className={hookStyles.blueText}><strong>its own input field which now drives the original</strong></em></h3>
     {/* <strong>Accessing a DOM node imperatively:</strong> */}
+    <hr />
     <section className={hookStyles.exampleSection}>
-        <section className={hookStyles.codeExampleText}>    
+        <section>    
             {/* <p>Clicking the button sets focus onto the input field using a reference.</p> */}
-            <p>Value which both textareas change: {value}</p>
-            <div className={hookStyles.textAreaContainer}>
+            <p><strong>Value which both textareas change:</strong> {value}</p>
+            <div className={hookStyles.textAreaContainer} style={{alignItems: 'center'}}>
                 
                 <ForwardRefExample 
                     ref={inputRef}
@@ -192,14 +196,16 @@ function TextInputWithFocusButton() {
                     className={hookStyles.textAreaFromExample}
                 />
             </div>
-            <div className={hookStyles.flexDesktopRowMobileColumn}>
-                <button onClick={() => inputRef.current && inputRef.current.focus()}>Focus Forward Ref Example Input</button>
-                <button onClick={() => inputRef.current && inputRefTA.current.focus()}>FocusTextArea</button>
+            <div className={hookStyles.flexDesktopRowMobileColumn} style={{alignItems: 'center'}}>
+                <button className={hookStyles.forwardRefButtons} onClick={() => inputRef.current && inputRef.current.focus()}>Focus Forward Ref Example Input</button>
+                {/* <button className={hookStyles.forwardRefButtons} style={{width: '50%'}} onClick={() => inputRef.current && inputRef.current.focus()}>Focus Forward Ref Example Input</button> */}
+                {/* <button style={{width: '50%'}} onClick={() => inputRef.current && inputRefTA.current.focus()}>FocusTextArea</button> */}
+                <button className={hookStyles.forwardRefButtons} onClick={() => inputRef.current && inputRefTA.current.focus()}>FocusTextArea</button>
             </div>
         </section>
     </section>
         
-    <br />
+    {/* <br /> */}
     <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
@@ -230,12 +236,16 @@ export default function UseRefHook() {
 `
 }            
 </SyntaxHighlighter>
-
-<p>Our ForwardRefExample component can now use the ref, so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</p>
+{/* <h3>Our ForwardRefExample component can now use the ref, <em className={hookStyles.blueText}><strong>so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</strong></em></h3> */}
+{/* <h3>Our ForwardRefExample component can now use the ref,so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</h3> */}
+{/* <br /> */}
+{/* <p>Our ForwardRefExample component can now use the ref, so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</p> */}
 <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 // ForwardRefExample.tsx
+
+// Our ForwardRefExample component can now use the ref, so long as it is exported with .forwardRef(COMPONENT_NAME)
 function ForwardRefExample(props:any, ref:any) {
     return (
         <input
@@ -249,7 +259,7 @@ export default React.forwardRef(ForwardRefExample)
 `
 }            
 </SyntaxHighlighter>
-<hr />
+
 
 
 
