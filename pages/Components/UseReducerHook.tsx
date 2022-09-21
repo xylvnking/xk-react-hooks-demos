@@ -51,12 +51,40 @@ export default function UseReducerHook() {
 
     return (
         <div className={hookStyles.container}>
-            <h1>useReducer</h1>
-            <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>official documentation</a>
-            <br />
-            <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>source code</a>
-            <p>useReducer is similar to useState but allows for custom state logic.</p>
-            <p>Instead of having multiple pieces of state and then external functions to handle the calculation of a more 'higher level' state, useReducer allows us to put all of that 'behind the scenes' within the state itself.</p>
+            <header>
+                <h1><small>use</small><span>Reducer</span></h1>
+                <nav>
+                    <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>official documentation</a>
+                    {/* <br /> */}
+                    <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>source code</a>
+                    {/* <br /> */}
+                    <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
+                </nav>
+            </header>
+            <main>
+                <h2> {'>'} useReducer is similar to useState but allows for custom state logic</h2>
+                <h3>Instead of having multiple pieces of state and then external functions to handle the calculation of a more 'higher level' state,<strong>useReducer allows us to put all of that .<em className={hookStyles.blueText}>'behind the scenes' </em> within the state itself</strong></h3>
+                <section>
+                    <ul>
+                        <li>useReducer is the cheat code of all hooks because it allows us to manage complex state more easily.</li>
+                        <li>useReducer is the cheat code of all hooks because it allows us to manage complex state more easily.</li>
+                        <li>useReducer is the cheat code of all hooks because it allows us to manage complex state more easily.</li>
+                        <li>useReducer is the cheat code of all hooks because it allows us to manage complex state more easily.</li>
+                        <li>useReducer is the cheat code of all hooks because it allows us to manage complex state more easily.</li>
+
+                    </ul>
+                </section>
+                <h2>useReducer <em>'hello world'</em>:</h2>
+                    <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+{`
+    const [state, dispatch] = useReducer(reducer, initialArg, init);
+
+`}
+                    </SyntaxHighlighter>
+                    <hr />
+            </main>
+
+            
             
 
             Count: {state.count}

@@ -46,6 +46,7 @@ export default function UseEffectHook() {
                         <li>The <em className={hookStyles.blueText}><strong>cleanup function</strong></em> runs when the component is unmounted. A common use is to cancel setting state if it was unmounted during data fetching.</li>
                         <li>In general, effects should minimize the number of dependencies and be strict about including them.</li>
                         <li>It can be helpful to create a mental model of effects by thinking of them as <em className={hookStyles.blueText}>synchronization</em> instead of as <em className={hookStyles.redText}>triggers</em>.</li>
+                        <li>If a function is shared by multiple effects and you can't list it as a dependency, consider hoisting it from the component scope if possible. This works because it's not within the render scope and can't be affected by the data flow. Another alternative is include said function within the dependency array, but to wrap it within a useCallback hook, which works becuase the function itself will now only change when necessary.</li>
                     </ul>
                 </section>
                 <h2>useEffect <em>'hello world'</em>:</h2>

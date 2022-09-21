@@ -68,12 +68,16 @@ export default function UseCallbackHook() {
                 <section style={theme} >
                 
                 <p>Changing the number value in the input field causes the child component to re-render because it changes the values within the dependency array of our useCallback, which is passed into our child component and used within the dependency array for its useEffect, causing the child to call the function from the parent to keep it's values synchronized.</p>
-                <p>changing this value changes the state which our callback depends on</p>
+                <p>If we didn't wrap the function which triggers a change to the values within the dependcy array of the child's useEffect inside of useCallback, any changes to state in the parent component would cause the child component to update it's data unnecessarily.</p>
+
+                <hr />
+
+                <h3>changing this value changes the state which our callback depends on</h3>
                 <input type="number" value={number} onChange={e => setNumber(parseInt(e.target.value))} className={hookStyles.inputLikeButton}/> 
-                <p>this button changes state which our callback does not depend on</p>
+                <h3>Toggling the theme with the button below changes state which our callback does not depend on</h3>
                 <button onClick={() => setDark(prevDark => !prevDark)}>Toggle theme</button>
-                <div className={hookStyles.flexDesktopRowMobileColumn} style={{gap: '10px'}}>
-                    <p style={{margin: '0px'}}>Values within the child component: </p>
+                <div className={hookStyles.flexDesktopRowMobileColumn} style={{gap: '10px', paddingTop: '20px'}}>
+                    <h3 style={{margin: '0px', padding: '0px'}}>Values within the child component: </h3>
                     <span style={{marginRight: '50px'}}>
                         <CallbackHookChild
                             getItemsCallback={getItemsCallback}
@@ -94,8 +98,6 @@ export default function UseCallbackHook() {
                 />
                 <hr />
             </div> */}
-
-            <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
             <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
                 {
 `
@@ -114,6 +116,7 @@ export default function UseCallbackHook() {
         return [number, number + 1, number + 2]
     }
 
+    // we useCallback here to avoid unnecessary re-renders of the child component
     const getItemsCallback = useCallback(
         () => {
             return [number, number + 1, number + 2]
