@@ -89,7 +89,7 @@ const Home: NextPage = () => {
         </nav> */}
         <nav className={navStyles.navContainer}>
           <h1 className={navStyles.navTitle}>REACT TYPESCRIPT HOOKS</h1>
-          <span style={{fontSize: '15px'}}>//// personal reference docs by <a target='_blank' href='https://github.com/xylvnking'>xylvn king</a></span>
+          <span style={{fontSize: '15px'}} className={navStyles.desc}>//// personal reference docs by <a target='_blank' href='https://github.com/xylvnking'>xylvn king</a></span>
         </nav>
 
       {/* <main className={layoutOpen ? `${layoutStyles.grid}` : `${layoutStyles.closed}`}> */}

@@ -29,3 +29,12 @@ align-items: center;
         
     }
 }
+
+.desc {
+    @media (max-width: 400px) {
+        max-width: 300px;
+        text-align: center;
+        
+    }
+    
+}
