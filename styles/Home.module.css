@@ -17,7 +17,7 @@
   }
 } */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .card,
   .footer {
     border-color: #222;
@@ -28,4 +28,4 @@
   .logo img {
     filter: invert(1);
   }
-}
+} */
