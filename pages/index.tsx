@@ -88,7 +88,8 @@ const Home: NextPage = () => {
           <button onClick={() => setLayoutOpen(!layoutOpen)}>view hooks</button>
         </nav> */}
         <nav className={navStyles.navContainer}>
-          <h1 className={navStyles.navTitle}>REACT TYPESCRIPT HOOKS <span style={{fontSize: '15px'}}>//// personal reference docs by <a target='_blank' href='https://github.com/xylvnking'>xylvn king</a></span></h1>
+          <h1 className={navStyles.navTitle}>REACT TYPESCRIPT HOOKS</h1>
+          <span style={{fontSize: '15px'}}>//// personal reference docs by <a target='_blank' href='https://github.com/xylvnking'>xylvn king</a></span>
         </nav>
 
       {/* <main className={layoutOpen ? `${layoutStyles.grid}` : `${layoutStyles.closed}`}> */}

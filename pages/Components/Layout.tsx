@@ -27,6 +27,7 @@ export default function Layout({selectHook, hookSelected}: Props) {
 
     const handleClick = (optionSelected: string) => {
         selectHook(optionSelected)
+        window.scrollTo({top: 700, behavior: 'smooth'})
     }
 
     const goHome = () => {

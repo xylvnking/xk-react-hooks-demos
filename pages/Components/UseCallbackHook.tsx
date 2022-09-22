@@ -164,7 +164,7 @@ export default function CallbackHookChild(props:any) {
                 }
             
             </SyntaxHighlighter>
-            
+            <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
             {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
         </div>
     )

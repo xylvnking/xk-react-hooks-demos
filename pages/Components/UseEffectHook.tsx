@@ -100,9 +100,9 @@ export default function UseEffectHook() {
                 <h2>A concrete example:</h2>
                 <section >
                 
-                        <p>value in the dependency array: {valueInDependencyArray}</p>
-                        <p>value which does not trigger useEffect: {valueWhichDoesNotTriggerUseEffect}</p>
-                        <p>number incremented within useEffect: {numberIncrementedWithinUseEffect}</p>
+                        <h3>value in the dependency array: {valueInDependencyArray}</h3>
+                        <h3>value which does not trigger useEffect: {valueWhichDoesNotTriggerUseEffect}</h3>
+                        <h3>number incremented within useEffect: {numberIncrementedWithinUseEffect}</h3>
                     <div className={hookStyles.flexDesktopRowMobileColumn}>
                         <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>increment value which does not trigger useEffect</button>
                         <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render entire component</button>
@@ -146,6 +146,7 @@ export default function UseEffectHook() {
     `}
                 </SyntaxHighlighter>
             </section>
+            <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
         </div>
     )
 }

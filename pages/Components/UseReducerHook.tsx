@@ -8,16 +8,9 @@ import { useRouter } from 'next/router'
 interface countInterface  {
     count: number
 }
-
-interface aStringInterface {
-    nameString: string
-}
-
-
 interface actionInterface {
     type: string
 }
-const initialName= {nameString: 'dylan'}
 const initialState = {count: 0};
 
 export default function UseReducerHook() {
@@ -35,18 +28,6 @@ export default function UseReducerHook() {
         }
       }
 
-    const [nameStringState, adjustNameArray] = useReducer(arrayReducer, initialName);
-
-    function arrayReducer(nameStringState: aStringInterface, action: actionInterface) {
-        switch (action.type) {
-            case 'addletter':
-                return {nameString: nameStringState.nameString + 'x'};
-            case 'removeLetter':
-                return {nameString: nameStringState.nameString.slice(0, nameStringState.nameString.length -1)};
-            default:
-              throw new Error();
-          }
-    }
     useEffect(() => {
         router.push('/?hook=useReducer', undefined, { shallow: true })
     }, [])
@@ -95,74 +76,55 @@ export default function UseReducerHook() {
                     </SyntaxHighlighter>
                     <hr />
             </main>
-
-            <h3><strong>Count:</strong> {state.count}</h3>
-            <button onClick={() => dispatch({type: 'decrement'})} className={hookStyles.inputLikeButtonReducer}>-</button>
-            <button onClick={() => dispatch({type: 'increment'})} className={hookStyles.inputLikeButtonReducer}>+</button>
-            <h3><strong>Name:</strong> {nameStringState.nameString}</h3>
-            <button onClick={() => adjustNameArray({type: 'addLetter'})} className={hookStyles.inputLikeButtonReducer}>-</button>
-            <button onClick={() => adjustNameArray({type: 'removeLetter'})} className={hookStyles.inputLikeButtonReducer}>+</button>
- 
+            <h2>Concrete examples:</h2>
+            <h3>Here we have a simple counter which is held in state with a reducer function taking care of its logic.</h3>
+            <h3>We also have a string which we're adding and taking away letters from.</h3>
+                <div style={{display: 'flex', alignContent: 'center'}}>
+                    <button onClick={() => dispatch({type: 'decrement'})} className={hookStyles.inputLikeButtonReducer}>-</button>
+                    <button onClick={() => dispatch({type: 'increment'})} className={hookStyles.inputLikeButtonReducer}>+</button>
+                    <h3 style={{paddingLeft: '50px'}}><strong>Count:</strong> {state.count}</h3>
+                </div>
             <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
                 
             
                 {
 `
-interface countInterface  {
-    count: number
-}
-
-interface aStringInterface {
-    nameString: string
-}
-
-
-interface actionInterface {
-    type: string
-}
-const initialName= {nameString: 'dylan'}
-const initialState = {count: 0};
-export default function UseReducerHook() {
-    const [state, dispatch] = useReducer(reducer, initialState);
-function reducer(state: countInterface, action: actionInterface) {
-    switch (action.type) {
-      case 'increment':
-        return {count: state.count + 1};
-      case 'decrement':
-        return {count: state.count - 1};
-      default:
-        throw new Error();
+    interface countInterface  {
+        count: number
     }
-  }
 
-const [nameStringState, adjustNameArray] = useReducer(arrayReducer, initialName);
+    interface actionInterface {
+        type: string
+    }
 
-function arrayReducer(nameStringState: aStringInterface, action: actionInterface) {
-    switch (action.type) {
-        case 'addletter':
-            return {nameString: nameStringState.nameString + 'x'};
-        case 'removeLetter':
-            return {nameString: nameStringState.nameString.slice(0, nameStringState.nameString.length -1)};
+    const initialState = {count: 0};
+
+    export default function UseReducerHook() {
+
+        const [state, dispatch] = useReducer(reducer, initialState);
+
+    function reducer(state: countInterface, action: actionInterface) {
+        switch (action.type) {
+        case 'increment':
+            return {count: state.count + 1};
+        case 'decrement':
+            return {count: state.count - 1};
         default:
-          throw new Error();
-      }
-}
-    return (
-        Count: {state.count}
-            <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-            <button onClick={() => dispatch({type: 'increment'})}>+</button>
+            throw new Error();
+        }
+    }
 
-            Name: {nameStringState.nameString}
-            <button onClick={() => adjustNameArray({type: 'addLetter'})}>-</button>
-            <button onClick={() => adjustNameArray({type: 'removeLetter'})}>+</button>
- 
-    )
-}
+        return (
+            Count: {state.count}
+                <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+                <button onClick={() => dispatch({type: 'increment'})}>+</button>
+        )
+    }
 `
                 }
             
             </SyntaxHighlighter>
-            
+            <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
             {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
         </div>
     )

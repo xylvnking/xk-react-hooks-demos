@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ForwardRefExample from './ComponentChildren/ForwardRefExample';
 import { useRouter } from 'next/router'
+import { NoFallbackError } from 'next/dist/server/base-server';
 
 
 // const initialValue: number = 0
@@ -128,9 +129,9 @@ const [numberState, setNumberState] = useState<number>(0)
             
             
             <hr />
-            <strong>Accessing a DOM node imperatively:</strong>
+            <h2>Accessing a DOM node imperatively:</h2>
             <section className={hookStyles.codeExampleText}>    
-                <p>Clicking the button sets focus onto the input field using a reference.</p>
+                <h3>Clicking the button sets focus onto the input field using a reference.</h3>
                 <div className={hookStyles.flexDesktopRowMobileColumn}>
                     <input ref={inputField} type="text" className={hookStyles.inputLikeButton} />
                     <button onClick={onButtonClick} >Focus the input</button>
@@ -267,7 +268,7 @@ export default React.forwardRef(ForwardRefExample)
 
 
 
-
+<button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
         </div>
     )
 }

@@ -5,6 +5,17 @@
 top:0px;
 padding-top: 20px;
 padding-bottom: 20px;
+
+display: flex;
+flex-direction: row;
+height: 100px;
+
+align-items: center;
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+        
+    }
 }
 
 .navTitle {
@@ -13,5 +24,8 @@ padding-bottom: 20px;
     font-size: 32px;
     margin: 0px;
     // text-align: end;
-
+    @media (max-width: 750px) {
+        font-size: 5vw;
+        
+    }
 }

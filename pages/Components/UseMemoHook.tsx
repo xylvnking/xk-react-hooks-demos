@@ -64,10 +64,10 @@ export default function UseMemoHook() {
             <section className={hookStyles.exampleSection}>
             <h2>A concrete example:</h2>
                 <section >
-                    <p>memorized value: {memorizedValue}</p>
-                    <p>non-memorized value: {nonMemorizedValue}</p>
-                    <p>count: {count}</p>
-                    <p>how many times the memorized value has been calculated: {howManyTimesMemorizedValueHasBeenCalculated}</p>
+                    <h3>memorized value: {memorizedValue}</h3>
+                    <h3>non-memorized value: {nonMemorizedValue}</h3>
+                    <h3>count: {count}</h3>
+                    <h3>how many times the memorized value has been calculated: {howManyTimesMemorizedValueHasBeenCalculated}</h3>
                     <div className={hookStyles.flexDesktopRowMobileColumn}>
                         <button onClick={() => setNonMemorizedValue(nonMemorizedValue + 1)}>increase non-memorized value, which doesn't recalculate</button>
                         <button onClick={() => setCount(count + 1)}>increase count (recalculates the useMemo value)</button>
@@ -106,7 +106,7 @@ export default function UseMemoHook() {
                 }
                 </SyntaxHighlighter>
             </section>
-            
+            <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
             {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
         </div>
     )

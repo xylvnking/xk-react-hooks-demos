@@ -100,11 +100,12 @@ export default function UseContextHook() {
             <section className={hookStyles.exampleSection}>
                 <h2>A concrete example:</h2>
                 <section >
+                    <h3>When we toggle darkmode on the parent component, our ThemeContext.Provider passes that data down to our children without us having to do so imperitively through props.</h3>
                     <div className={hookStyles.flexDesktopRowMobileColumn} style={{width: '100%'}}>
-                    <button onClick={() => setDarkMode(!darkMode)}>toggle {darkMode ? 'light' : 'dark'} mode</button>
-                    <ThemeContext.Provider value={darkMode ? themes.dark : themes.light} >
-                        <Toolbar />
-                    </ThemeContext.Provider>
+                        <button onClick={() => setDarkMode(!darkMode)}>toggle {darkMode ? 'light' : 'dark'} mode</button>
+                        <ThemeContext.Provider value={darkMode ? themes.dark : themes.light} >
+                            <Toolbar />
+                        </ThemeContext.Provider>
                     </div>
                 </section>
             
@@ -143,9 +144,12 @@ function Toolbar() {
 export default function UseContextHook() {
     const [darkMode, setDarkMode] = useState<boolean>(true)
     return (
-        <ThemeContext.Provider value={darkMode ? themes.dark : themes.light}>
-            <Toolbar />
-        </ThemeContext.Provider>
+        <>
+            <button onClick={() => setDarkMode(!darkMode)}>toggle {darkMode ? 'light' : 'dark'} mode</button>
+            <ThemeContext.Provider value={darkMode ? themes.dark : themes.light}>
+                <Toolbar />
+            </ThemeContext.Provider>
+        </>
     )
 }
 `
@@ -154,6 +158,7 @@ export default function UseContextHook() {
             </SyntaxHighlighter>
             </section>
             {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
+            <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
         </div>
     )
 }
