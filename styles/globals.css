@@ -9,7 +9,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-family: 'IBM Plex Mono', monospace;
     /* font-family: 'Roboto Mono', monospace; */
-    
+    color-scheme: dark;
 }
 
 a {
@@ -49,7 +49,7 @@ hr {
 }
 
 
-/* @media (prefers-color-scheme: dark) {
+ /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -57,4 +57,4 @@ hr {
     color: white;
     background: black;
   }
-} */
+}  */
