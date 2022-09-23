@@ -75,6 +75,12 @@ const Home: NextPage = () => {
     }
 
   }, [router.query])
+
+  useEffect(() => {
+    if (document.getElementById("mainStuff")) {
+      document.getElementById('mainStuff')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [hookSelected])
   
   return (
     <div className={styles.container}>
@@ -89,7 +95,7 @@ const Home: NextPage = () => {
         </nav> */}
         <nav className={navStyles.navContainer}>
           <h1 className={navStyles.navTitle}>REACT TYPESCRIPT HOOKS</h1>
-          <span style={{fontSize: '15px'}} className={navStyles.desc}>//// personal reference docs by <a target='_blank' href='https://github.com/xylvnking'>xylvn king</a></span>
+          <span style={{fontSize: '15px'}} className={navStyles.desc}>personal reference docs by <a target='_blank' href='https://github.com/xylvnking'>xylvn king</a></span>
         </nav>
 
       {/* <main className={layoutOpen ? `${layoutStyles.grid}` : `${layoutStyles.closed}`}> */}
@@ -98,7 +104,7 @@ const Home: NextPage = () => {
           // layoutOpen 
           // &&
             // hookSelected &&
-          <section className={layoutStyles.layoutColumn}>
+          <section className={layoutStyles.layoutColumn} >
             {/* <button onClick={() => setLayoutOpen(!layoutOpen)}>toggle layout</button> */}
             <Layout 
               selectHook={setHookSelected}
@@ -108,7 +114,7 @@ const Home: NextPage = () => {
           
         }
         
-        <section className={layoutStyles.hookComponentsColumn}>
+        <section className={layoutStyles.hookComponentsColumn} id='mainStuff'>
           {
             RenderSwitch()
           }
