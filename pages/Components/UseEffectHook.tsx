@@ -4,11 +4,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useRouter } from 'next/router'
 
-// type Props = {}
-
 export default function UseEffectHook() {
     const router = useRouter()
-
 
     const [valueInDependencyArray, setValueInDependencyArray] = useState<number>(0)
     const [numberIncrementedWithinUseEffect, setNumberIncrementedWithinUseEffect] = useState<number>(0)
@@ -56,7 +53,7 @@ export default function UseEffectHook() {
                     </ul>
                 </section>
                 <h2>useEffect <em>'hello world'</em>:</h2>
-                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
 {`
     useEffect(() => {
         // do thing
@@ -66,10 +63,8 @@ export default function UseEffectHook() {
     }, [/*dependency array*/]) //whatever is here will trigger a render when it changes
 
 `}
-                </SyntaxHighlighter>
-
+</SyntaxHighlighter>
                 <hr />
-
                 <ul>
                     <li className={hookStyles.listTitle}><strong>useEffect is great for:</strong></li>
                     <li>Fetching data from an external API</li>
@@ -77,12 +72,8 @@ export default function UseEffectHook() {
                     <li>When a component populates its local state with data it receives via props</li>
                     <li>Most cases where you would have used <em className={hookStyles.blueText}>componentDidMount</em> or <em className={hookStyles.blueText}>componentDidUpdate</em></li>
                     <li>Synchronizing our component with data being delivered to it from any external source.</li>
-                    {/* <li>Directly updating the DOM. </li> */}
-                    {/* <li>Timers</li> */}
                 </ul>
-
                 <hr />
-
                 <ul>
                     <li className={hookStyles.listTitle}><strong>Common mistakes:</strong></li>
                     <li><span className={hookStyles.redText}>Causing an infinite loop</span> by updating state within the callback function and <span className={hookStyles.redText}>forgetting to include a dependency array.</span></li>
@@ -93,25 +84,21 @@ export default function UseEffectHook() {
                 </ul>
                 <small><em><strong>PS</strong> - useLayoutEffect is useEffect except it blocks the initial render, and is useful for visual elements like modals</em></small>
             </main>
-
             <hr />
-
             <section className={hookStyles.exampleSection}>
                 <h2>A concrete example:</h2>
                 <section >
-                
-                        <h3>value in the dependency array: {valueInDependencyArray}</h3>
-                        <h3>value which does not trigger useEffect: {valueWhichDoesNotTriggerUseEffect}</h3>
-                        <h3>number incremented within useEffect: {numberIncrementedWithinUseEffect}</h3>
+                    <h3>value in the dependency array: {valueInDependencyArray}</h3>
+                    <h3>value which does not trigger useEffect: {valueWhichDoesNotTriggerUseEffect}</h3>
+                    <h3>number incremented within useEffect: {numberIncrementedWithinUseEffect}</h3>
                     <div className={hookStyles.flexDesktopRowMobileColumn}>
                         <button onClick={() => setValueWhichDoesNotTriggerUseEffect(valueWhichDoesNotTriggerUseEffect + 1)}>increment value which does not trigger useEffect</button>
                         <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render entire component</button>
                         <button onClick={() => setValueInDependencyArray(valueInDependencyArray + 1)}>update value in dependency array</button>
                     </div>
                 </section>
-
-                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
-    {`
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+{`
     export default function UseEffectHook() {
         // first let's create some pieces of state to work with
 
@@ -142,9 +129,8 @@ export default function UseEffectHook() {
         )
     }
 
-
-    `}
-                </SyntaxHighlighter>
+`}
+</SyntaxHighlighter>
             </section>
             <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
         </div>

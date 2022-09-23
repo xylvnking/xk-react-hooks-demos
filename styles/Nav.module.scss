@@ -1,20 +1,13 @@
 .navContainer {
-
-// background: rgb(0,0,0);
-// background: linear-gradient(90deg, rgba(0,0,0,0) 10%, rgba(255,255,255,1) 100%);
 top:0px;
 padding-top: 20px;
 padding-bottom: 20px;
-
 display: flex;
 flex-direction: row;
 height: 100px;
-
 align-items: center;
-
     @media (max-width: 850px) {
         flex-direction: column;
-        
     }
 }
 
@@ -23,18 +16,13 @@ align-items: center;
     padding-right: 40px;
     font-size: 32px;
     margin: 0px;
-    // text-align: end;
     @media (max-width: 750px) {
         font-size: 5vw;
-        
     }
 }
 
 .desc {
     @media (max-width: 800px) {
-        // max-width: 300px;
         text-align: center;
-        
     }
-    
 }

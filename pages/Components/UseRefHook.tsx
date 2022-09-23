@@ -41,13 +41,10 @@ export default function UseRefHook() {
             <h1><small>use</small><span>Ref</span></h1>
                 <nav>
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>official documentation</a>
-                    {/* <br /> */}
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>source code</a>
-                    {/* <br /> */}
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
                 </nav>
             </header>
-
             <main>
                 <h2> {'>'} useRef provides us with a way to refer to data which persists between re-renders <em className={hookStyles.blueText}>without causing a re-render when changed</em></h2>
                 <h3>This means that <em className={hookStyles.blueText}><strong>useRef is similar to useState</strong> but it also allows us to store a reference to a DOM element.</em></h3>
@@ -69,33 +66,11 @@ export default function UseRefHook() {
 
 `}
             </SyntaxHighlighter>
-            {/* <hr />
-
-                <ul>
-                    <li className={hookStyles.listTitle}><strong>useRef is great for:</strong></li>
-                    <li>Accessing DOM elements imperatively. See the examble below to understand how we can use a button to set focus on an input field.</li>
-                    
-                </ul>
-            <hr />
-
-                <ul>
-                    <li className={hookStyles.listTitle}><strong>Common mistakes:</strong></li>
-                    <li><span className={hookStyles.redText}>Causing an infinite loop</span> by updating state within the callback function and <span className={hookStyles.redText}>forgetting to include a dependency array.</span></li>
-                    <li><span className={hookStyles.redText}>Returning</span> <span className={hookStyles.lightText}>(something other than a cleanup function)</span> directly. </li>
-                    <li><span className={hookStyles.redText}>Causing an infinite loop</span> by updating state within the callback function and <span className={hookStyles.redText}>populating the dependency array with that same state.</span></li>
-                    <li><span className={hookStyles.redText}><em>Relying</em> on data fetched within the callback to create a user interface.</span> It's common to fetch data, store it in state, and then map over that state to create a dynamic user interface - but <span className={hookStyles.blueText}>a check must be performed to ensure the component doesn't break if the fetch within the useEffect callback doesn't deliver the expected data.</span> This is commonly done with a simple && conditional operator, or a ternary.</li>
-                    <li>Calling functions <span className={hookStyles.redText}><em>that aren't declared within the effect itself</em></span> and which aren't pure computations.</li>
-                    <li>common mistake: using state instead of ref.</li>
-                    <li>setting the state to the same value it already is renders it an idempotent operation.</li>
-                </ul> */}
-
             </main>
-
             <hr />
             <section className={hookStyles.exampleSection}>
-            <h2>Concrete examples:</h2>
-            <strong>Storing persistant data which doesn't trigger a re-render when its changed:</strong>
-                
+                <h2>Concrete examples:</h2>
+                <strong>Storing persistant data which doesn't trigger a re-render when its changed:</strong>
                 <section>
                     <p>value held in state: </p>
                     <p>number not held in state:</p>
@@ -107,11 +82,8 @@ export default function UseRefHook() {
                     <button onClick={() => setNumberState(numberState + refContainer.current)}>increase state with ref</button>
                     </div>
                 </section>
-            
-
-            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
-{
-`
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
+{`
 let initialValue: number = 0
 const refContainer = useRef(initialValue);
 const [numberState, setNumberState] = useState<number>(0)
@@ -122,23 +94,18 @@ const [numberState, setNumberState] = useState<number>(0)
 <p>numberState: {numberState}</p>
 <p>we can access the current value of the reference within the .current property.</p>
 
-`
-}            
-</SyntaxHighlighter>
-
-            
-            
-            <hr />
-            <h2>Accessing a DOM node imperatively:</h2>
-            <section className={hookStyles.codeExampleText}>    
-                <h3>Clicking the button sets focus onto the input field using a reference.</h3>
-                <div className={hookStyles.flexDesktopRowMobileColumn}>
-                    <input ref={inputField} type="text" className={hookStyles.inputLikeButton} />
-                    <button onClick={onButtonClick} >Focus the input</button>
-                </div>
-            </section>
-            
-            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
+`}            
+</SyntaxHighlighter>           
+                <hr />
+                <h2>Accessing a DOM node imperatively:</h2>
+                <section className={hookStyles.codeExampleText}>    
+                    <h3>Clicking the button sets focus onto the input field using a reference.</h3>
+                    <div className={hookStyles.flexDesktopRowMobileColumn}>
+                        <input ref={inputField} type="text" className={hookStyles.inputLikeButton} />
+                        <button onClick={onButtonClick} >Focus the input</button>
+                    </div>
+                </section>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
 function TextInputWithFocusButton() {
@@ -159,59 +126,45 @@ function TextInputWithFocusButton() {
 `
 }
 </SyntaxHighlighter>
-
-    </section>
-            
-<hr/>
-
-
-
-
-    {/* <h2>forwardRef</h2> */}
-    <header>
-        <h1><small>forward</small><span>Ref</span></h1>
-            <nav>
-                <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>official documentation</a>
-                
-                <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>source code</a>
-                
-                <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
-            </nav>
-        </header>
-    <h2> {'>'} forwardRef <em className={hookStyles.blueText}>allows us to pass a reference into a child component</em></h2>
-
-    <h3>The following example shows us passing a reference to an input field down to a separate child component containing <em className={hookStyles.blueText}><strong>its own input field which now drives the original</strong></em></h3>
-    {/* <strong>Accessing a DOM node imperatively:</strong> */}
-    <hr />
-    <section className={hookStyles.exampleSection}>
-        <section>    
-            {/* <p>Clicking the button sets focus onto the input field using a reference.</p> */}
-            <p><strong>Value which both textareas change:</strong> {value}</p>
-            <div className={hookStyles.textAreaContainer} style={{alignItems: 'center'}}>
-                
-                <ForwardRefExample 
-                    ref={inputRef}
-                    value={value}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-                    className={hookStyles.textAreaFromExample}
-                />
-                <textarea
-                    ref={inputRefTA}
-                    value={value}
-                    onChange={(e: React.ChangeEvent<any>) => setValue(e.target.value)}
-                    className={hookStyles.textAreaFromExample}
-                />
-            </div>
-            <div className={hookStyles.flexDesktopRowMobileColumn} style={{alignItems: 'center'}}>
-                <button className={hookStyles.forwardRefButtons} onClick={() => inputRef.current && inputRef.current.focus()}>Focus Forward Ref Example Input</button>
-                {/* <button className={hookStyles.forwardRefButtons} style={{width: '50%'}} onClick={() => inputRef.current && inputRef.current.focus()}>Focus Forward Ref Example Input</button> */}
-                {/* <button style={{width: '50%'}} onClick={() => inputRef.current && inputRefTA.current.focus()}>FocusTextArea</button> */}
-                <button className={hookStyles.forwardRefButtons} onClick={() => inputRef.current && inputRefTA.current.focus()}>FocusTextArea</button>
-            </div>
-        </section>
-    </section>
-        
-    {/* <br /> */}
+            </section>   
+            <hr/>
+            <header>
+                <h1><small>forward</small><span>Ref</span></h1>
+                <nav>
+                    <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>official documentation</a>
+                    <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>source code</a>
+                    <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
+                </nav>
+            </header>
+            <h2> {'>'} forwardRef <em className={hookStyles.blueText}>allows us to pass a reference into a child component</em></h2>
+            <h3>The following example shows us passing a reference to an input field down to a separate child component containing <em className={hookStyles.blueText}><strong>its own input field which now drives the original</strong></em></h3>
+            <hr />
+            <section className={hookStyles.exampleSection}>
+                <section>    
+                    <p><strong>Value which both textareas change:</strong> {value}</p>
+                    <div className={hookStyles.textAreaContainer} style={{alignItems: 'center'}}>
+                        
+                        <ForwardRefExample 
+                            ref={inputRef}
+                            value={value}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+                            className={hookStyles.textAreaFromExample}
+                        />
+                        <textarea
+                            ref={inputRefTA}
+                            value={value}
+                            onChange={(e: React.ChangeEvent<any>) => setValue(e.target.value)}
+                            className={hookStyles.textAreaFromExample}
+                        />
+                    </div>
+                    <div className={hookStyles.flexDesktopRowMobileColumn} style={{alignItems: 'center'}}>
+                        <button className={hookStyles.forwardRefButtons} onClick={() => inputRef.current && inputRef.current.focus()}>Focus Forward Ref Example Input</button>
+                        {/* <button className={hookStyles.forwardRefButtons} style={{width: '50%'}} onClick={() => inputRef.current && inputRef.current.focus()}>Focus Forward Ref Example Input</button> */}
+                        {/* <button style={{width: '50%'}} onClick={() => inputRef.current && inputRefTA.current.focus()}>FocusTextArea</button> */}
+                        <button className={hookStyles.forwardRefButtons} onClick={() => inputRef.current && inputRefTA.current.focus()}>FocusTextArea</button>
+                    </div>
+                </section>
+            </section>
     <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
 {
 `
@@ -239,16 +192,10 @@ export default function UseRefHook() {
     )
 }
 
-`
-}            
+`}            
 </SyntaxHighlighter>
-{/* <h3>Our ForwardRefExample component can now use the ref, <em className={hookStyles.blueText}><strong>so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</strong></em></h3> */}
-{/* <h3>Our ForwardRefExample component can now use the ref,so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</h3> */}
-{/* <br /> */}
-{/* <p>Our ForwardRefExample component can now use the ref, so long as it is exported with .forwardRef({'<'}COMPONENT_NAME{'>'})</p> */}
 <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
-{
-`
+{`
 // ForwardRefExample.tsx
 
 // Our ForwardRefExample component can now use the ref, so long as it is exported with .forwardRef(COMPONENT_NAME)
@@ -262,13 +209,9 @@ function ForwardRefExample(props:any, ref:any) {
 }
     
 export default React.forwardRef(ForwardRefExample)
-`
-}            
+`}            
 </SyntaxHighlighter>
-
-
-
-<button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
+            <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
         </div>
     )
 }

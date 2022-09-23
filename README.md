@@ -1,3 +1,7 @@
+# to do:
+
+fix links
+
 # Using React Hooks with TypeScript
 
 <h2> > This is a forever-on-going reference guide to working with React hooks. I started this because I kept forgetting small things and wanted a quick reference online in my own language.</h2>

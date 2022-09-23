@@ -11,6 +11,7 @@ export default function UseCallbackHook() {
     if (number <= 0) {
         setNumber(1)
     }
+
     const [dark, setDark] = useState<boolean>(false)
     const theme = {
         backgroundColor: dark ? '#333' : '#FFF',
@@ -52,7 +53,7 @@ export default function UseCallbackHook() {
                     </ul>
                 </section>
                 <h2>useCallback <em>'hello world'</em>:</h2>
-                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
 {`
     const memoizedCallback = useCallback(() => {
         
@@ -61,21 +62,15 @@ export default function UseCallbackHook() {
     },[a, b]) // dependency array
 
 `}
-                </SyntaxHighlighter>
+</SyntaxHighlighter>
             </main>
-            
-
             <hr />
-
             <section className={hookStyles.exampleSection}>
             <h2>A concrete example:</h2>
                 <section style={theme} >
-                
                 <p>Changing the number value in the input field causes the child component to re-render because it changes the values within the dependency array of our useCallback, which is passed into our child component and used within the dependency array for its useEffect, causing the child to call the function from the parent to keep it's values synchronized.</p>
                 <p>If we didn't wrap the function which triggers a change to the values within the dependcy array of the child's useEffect inside of useCallback, any changes to state in the parent component would cause the child component to update it's data unnecessarily.</p>
-
                 <hr />
-
                 <h3>changing this value changes the state which our callback depends on</h3>
                 <input type="number" value={number} onChange={e => setNumber(parseInt(e.target.value))} className={hookStyles.inputLikeButton}/> 
                 <h3>Toggling the theme with the button below changes state which our callback does not depend on</h3>
@@ -90,21 +85,8 @@ export default function UseCallbackHook() {
                 </div>
                 </section>
             </section>
-
-            {/* <div style={theme}>
-                
-
-                <hr />
-
-                <p>Child component: </p>
-                <CallbackHookChild  
-                    getItemsCallback={getItemsCallback}
-                />
-                <hr />
-            </div> */}
-            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
-                {
-`
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
+{`
 // parent component
 
 export default function UseCallbackHook() {
@@ -160,12 +142,9 @@ export default function CallbackHookChild(props:any) {
      )
 }
     
-`
-                }
-            
-            </SyntaxHighlighter>
+`}
+</SyntaxHighlighter>
             <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
-            {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
         </div>
     )
 }

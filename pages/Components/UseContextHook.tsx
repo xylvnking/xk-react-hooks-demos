@@ -1,11 +1,9 @@
 import React, {useEffect, useState, useContext} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useRouter } from 'next/router'
 
-// type Props = {}
 const themes = {
     light: {
       foreground: "#000000",
@@ -17,8 +15,7 @@ const themes = {
     }
   };
 
-  const ThemeContext = React.createContext(themes.light);
-
+const ThemeContext = React.createContext(themes.light);
 
 function Toolbar() {
     return (
@@ -28,21 +25,12 @@ function Toolbar() {
     );
 }
   function ThemedTextarea() {
-      const theme = useContext(ThemeContext);
-      const styleFromContext = {background: theme.background, color: theme.foreground}
-      return (
-        //     <>
-        //         <button style={styleFromContext}>
-        //         {/* <button style={styleFromContext}> */}
-        //             useContext makes it easy to toggle between light and dark mode!
-        //         </button>
-        //         <textarea style={{ background: theme.background, color: theme.foreground }} />
-        //   </>
-                <textarea style={{ background: theme.background, color: theme.foreground, resize: 'none'}} className={hookStyles.inputLikeButton}/>
+        const theme = useContext(ThemeContext);
+        const styleFromContext = {background: theme.background, color: theme.foreground}
+        return (
+            <textarea style={{ background: theme.background, color: theme.foreground, resize: 'none'}} className={hookStyles.inputLikeButton}/>
     );
 }
-
-  
 
 export default function UseContextHook() {
     const router = useRouter()
@@ -53,7 +41,6 @@ export default function UseContextHook() {
     }, [])
 
     return (
-        
         <div className={hookStyles.container}>
             <header>
                 <h1><small>use</small><span>Context</span></h1>
@@ -76,23 +63,15 @@ export default function UseContextHook() {
                         <li>useContext can make unit testing more difficult because the data within the tested component isn't readily available to the external test.</li>
                         <li>useContext requires 3 parts: the context, the provider, and the consumer</li>
                         const UserContext = createContext('Unknown');
-
-                        {/* <ul style={{paddingLeft: '20px', listStyle: 'circle'}}>
-                            <h3 style={{marginLeft: '-20px'}}>common examples of data to keep within context:</h3>
-                            <li>color themes</li>
-                            <li>authentication details</li>
-                            <li>language</li>
-                            <li>userPreferences</li>
-                        </ul> */}
                     </ul>
                 </section>
                 <h2>useContext <em>'hello world'</em>:</h2>
-                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
 {`
     const SomeContext = createContext(some data here);
 
 `}
-                </SyntaxHighlighter>
+</SyntaxHighlighter>
             </main>
 
             <hr />
@@ -109,11 +88,8 @@ export default function UseContextHook() {
                     </div>
                 </section>
             
-            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
-                {/* {codeString} */}
-            
-                {
-`
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
+{`
 const themes = {
     light: {
       foreground: "#000000",
@@ -152,12 +128,9 @@ export default function UseContextHook() {
         </>
     )
 }
-`
-                }
-            
-            </SyntaxHighlighter>
+`}
+</SyntaxHighlighter>
             </section>
-            {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
             <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
         </div>
     )

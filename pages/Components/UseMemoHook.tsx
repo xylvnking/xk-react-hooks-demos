@@ -1,11 +1,8 @@
 import React, {useEffect, useState, useMemo} from 'react'
 import hookStyles from '../../styles/Hooks.module.scss'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useRouter } from 'next/router'
-
-// type Props = {}
 
 export default function UseMemoHook() {
     const router = useRouter()
@@ -23,12 +20,13 @@ export default function UseMemoHook() {
         }
         return valueOne;
     }
+
     useEffect(() => {
         router.push('/?hook=useMemo', undefined, { shallow: true })
     }, [])
+
     return (
         <div className={hookStyles.container}>
-            
             <header>
                 <h1><small>use</small><span>Memo</span></h1>
                 <nav>
@@ -51,16 +49,14 @@ export default function UseMemoHook() {
                     </ul>
                 </section>
                 <h2>useMemo <em>'hello world'</em>:</h2>
-                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
 {`
     const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 `}
-                </SyntaxHighlighter>
+</SyntaxHighlighter>
             </main>
-
             <hr />
-
             <section className={hookStyles.exampleSection}>
             <h2>A concrete example:</h2>
                 <section >
@@ -74,9 +70,8 @@ export default function UseMemoHook() {
                         <button onClick={() => toggleTriggerRender(!triggerRender)}>re-render component (won't recalculate value)</button>
                     </div>
                 </section>
-                <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
-                {
-`
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
+{`
 export default function UseMemoHook() {
 
     const [triggerRender, toggleTriggerRender] = useState<boolean>(false)
@@ -102,9 +97,8 @@ export default function UseMemoHook() {
     )
 }
 
-`
-                }
-                </SyntaxHighlighter>
+`}
+</SyntaxHighlighter>
             </section>
             <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
             {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}

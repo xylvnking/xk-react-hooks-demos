@@ -4,7 +4,6 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useRouter } from 'next/router'
 
-
 interface countInterface  {
     count: number
 }
@@ -32,18 +31,13 @@ export default function UseReducerHook() {
         router.push('/?hook=useReducer', undefined, { shallow: true })
     }, [])
 
-
-    // https://overreacted.io/a-complete-guide-to-useeffect/#decoupling-updates-from-actions
-
     return (
         <div className={hookStyles.container}>
             <header>
                 <h1><small>use</small><span>Reducer</span></h1>
                 <nav>
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>official documentation</a>
-                    {/* <br /> */}
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>source code</a>
-                    {/* <br /> */}
                     <a target='_blank' href='https://reactjs.org/docs/hooks-reference.html#useeffect' className={hookStyles.link}>code sandbox</a>
                 </nav>
             </header>
@@ -68,12 +62,12 @@ export default function UseReducerHook() {
                     </ul>
                 </section>
                 <h2>useReducer <em>'hello world'</em>:</h2>
-                    <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax} customStyle={{padding:'0px', margin: '0px', fontSize: '14px'}}>
 {`
     const [state, dispatch] = useReducer(reducer, initialArg, init);
 
 `}
-                    </SyntaxHighlighter>
+</SyntaxHighlighter>
                     <hr />
             </main>
             <h2>Concrete examples:</h2>
@@ -84,11 +78,8 @@ export default function UseReducerHook() {
                     <button onClick={() => dispatch({type: 'increment'})} className={hookStyles.inputLikeButtonReducer}>+</button>
                     <h3 style={{paddingLeft: '50px'}}><strong>Count:</strong> {state.count}</h3>
                 </div>
-            <SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>
-                
-            
-                {
-`
+<SyntaxHighlighter language="javascript" style={nightOwl} className={hookStyles.syntax}>            
+{`
     interface countInterface  {
         count: number
     }
@@ -120,12 +111,9 @@ export default function UseReducerHook() {
                 <button onClick={() => dispatch({type: 'increment'})}>+</button>
         )
     }
-`
-                }
-            
-            </SyntaxHighlighter>
+`}
+</SyntaxHighlighter>
             <button onClick={() => window.scrollTo({top: 100, behavior: 'smooth'})} className={hookStyles.scrollToTopButton}>^</button>
-            {/* <script src="https://gist.github.com/xylvnking/455c32bd7017d54f6d9016c1d583ef28.js"></script> */}
         </div>
     )
 }
